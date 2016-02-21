@@ -1,33 +1,33 @@
 <?php
 function roll_potion($floor, $ceiling)
 {
-    global $potions_0, $potions_1, $potions_2, $potions_3;
+    global $potions;
     
     $r = rand(1, 100);
     if ($ceiling > 50000) // major
     {
         if (inr($r, 1, 20))
-            $pot = arr($potions_2);
+            $pot = arr($potions[2]);
         else
-            $pot = arr($potions_3);
+            $pot = arr($potions[3]);
     }
     else if ($ceiling > 10000) // medium
     {
         if (inr($r, 1, 20))
-            $pot = arr($potions_1);
+            $pot = arr($potions[1]);
         else if (inr($r, 21, 60))
-            $pot = arr($potions_2);
+            $pot = arr($potions[2]);
         else
-            $pot = arr($potions_3);
+            $pot = arr($potions[3]);
     }
     else // minor
     {
         if (inr($r, 1, 20))
-            $pot = arr($potions_0);
+            $pot = arr($potions[0]);
         else if (inr($r, 21, 60))
-            $pot = arr($potions_1);
+            $pot = arr($potions[1]);
         else
-            $pot = arr($potions_2);
+            $pot = arr($potions[2]);
     }
     
     $final = new ItemEntry();

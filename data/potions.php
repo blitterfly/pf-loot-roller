@@ -45,7 +45,9 @@ function energy_potion()
     return arr($energy);
 }
 
-$potions_0 = [
+$potions = [];
+
+$potions[0] = [
     new Potion(0, 'arcane mark'),
     new Potion(0, 'guidance'),
     new Potion(0, 'light'),
@@ -55,7 +57,7 @@ $potions_0 = [
     new Potion(0, 'virtue')
 ];
 
-$potions_1 = [
+$potions[1] = [
     new Potion(1, 'animate rope'),
     new Potion(1, 'bless weapon'),
     new Potion(1, 'cure light wounds'),
@@ -84,7 +86,7 @@ $potions_1 = [
     new Potion(1, 'shillelagh')
 ];
 
-$potions_2 = [
+$potions[2] = [
     new Potion(2, 'aid'),
     new Potion(2, 'align weapon'),
     new Potion(2, 'arcane lock'),
@@ -119,7 +121,7 @@ $potions_2 = [
     new Potion(2, 'continual flame', 350)
 ];
 
-$potions_3 = [
+$potions[3] = [
     new Potion(3, 'cure serious wounds'),
     new Potion(3, 'daylight'),
     new Potion(3, 'dispel magic'),
