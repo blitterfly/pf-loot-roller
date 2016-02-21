@@ -1,0 +1,90 @@
+<?php
+class Staff
+{
+    public $name;
+    public $cost;
+    
+    function __construct($name, $cost)
+    {
+        $this->name = $name;
+        $this->cost = $cost;
+    }
+}
+
+$staves = [
+    new Staff('staff of blessed relief', 7200),
+    new Staff('staff of minor arcana', 8000),
+    new Staff('staff of tricks', 8800),
+    new Staff('staff of the scout', 9600),
+    new Staff('staff of eidolons', 14400),
+    new Staff('staff of accompaniment', 14800),
+    new Staff('staff of understanding', 16000),
+    new Staff('staff of charming', 17600),
+    new Staff('staff of fire', 18950),
+    new Staff('staff of courage', 19200),
+    new Staff('staff of belittling', 20000),
+    new Staff('staff of feast and famine', 20800),
+    new Staff('staff of rigor', 20800),
+    new Staff('staff of swarming insects', 22800),
+    new Staff('staff of authority', 23000),
+    new Staff('staff of radiance', 23200),
+    new Staff('staff of size alteration', 26150),
+    new Staff('staff of journeys', 27200),
+    new Staff('staff of acid', 28600),
+    new Staff('staff of shrieking', 28800),
+    new Staff('chaotic staff', 29600),
+    new Staff('holy staff', 29600),
+    new Staff('lawful staff', 29600),
+    new Staff('staff of healing', 29600),
+    new Staff('unholy staff', 29600),
+    new Staff('staff of the master (necromancy)', 30000),
+    new Staff('staff of spiders', 30200),
+    new Staff('staff of electricity', 31900),
+    new Staff('heretic\'s bane', 32000),
+    new Staff('musical staff', 32000),
+    new Staff('staff of souls', 32800),
+    new Staff('staff of toxins', 34200),
+    new Staff('staff of stealth', 36800),
+    new Staff('staff of the avenger', 37310),
+    new Staff('staff of aspects', 37600),
+    new Staff('staff of speaking', 39600),
+    new Staff('staff of frost', 41400),
+    new Staff('staff of bolstering', 41600),
+    new Staff('staff of curses', 43500),
+    new Staff('staff of dark flame', 47000),
+    new Staff('staff of cackling wrath', 47200),
+    new Staff('staff of performance', 48800),
+    new Staff('animate staff', 49800),
+    new Staff('staff of revelations', 51008),
+    new Staff('staff of illumination', 51500),
+    new Staff('staff of obstacles', 51600),
+    new Staff('staff of heaven and earth', 54000),
+    new Staff('staff of travel', 54400),
+    new Staff('staff of hoarding', 55866),
+    new Staff('staff of traps', 56925),
+    new Staff('staff of many rays', 57200),
+    new Staff('staff of mithral might', 58000),
+    new Staff('staff of defense', 62000),
+    new Staff('staff of the planes', 63960),
+    new Staff('staff of hungry shadows', 69300),
+    new Staff('dragon staff', 81000),
+    new Staff('staff of slumber', 81766),
+    new Staff('staff of abjuration', 82000),
+    new Staff('staff of conjuration', 82000),
+    new Staff('staff of divination', 82000),
+    new Staff('staff of enchantment', 82000),
+    new Staff('staff of evocation', 82000),
+    new Staff('staff of illusion', 82000),
+    new Staff('staff of necromancy', 82000),
+    new Staff('staff of transmutation', 82000),
+    new Staff('staff of weather', 84066),
+    new Staff('staff of earth and stone', 85800),
+    new Staff('staff of vision', 86666),
+    new Staff('staff of the woodlands', 100400),
+    new Staff('staff of life', 109400),
+    new Staff('staff of hundred hands', 180200),
+    new Staff('staff of passage', 206900),
+    new Staff('staff of the hierophant', 220000),
+    new Staff('staff of power', 235000)
+];
+?>

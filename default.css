@@ -1,0 +1,210 @@
+.item-detail-template {
+    float: left;
+    position: relative;
+    margin: 24px 0 0 24px;
+    background: url(images/bg.png);
+    background-size: cover;
+    color: #ddd;
+    border: 1px solid #000;
+    padding: 8px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    text-shadow: 1px 1px 1px #000;
+    width: 280px;
+    min-height: 170px;
+}
+
+.item-detail-template.item-rarity-junk .item-name {
+    color: #999
+}
+
+.item-detail-template.item-rarity-basic .item-name {
+    color: #fff
+}
+
+.item-detail-template.item-rarity-fine .item-name {
+    color: #62a4da
+}
+
+.item-detail-template.item-rarity-uncommon .item-name {
+    color: #1a9306
+}
+
+.item-detail-template.item-rarity-rare .item-name {
+    color: #ffa405
+}
+
+.item-detail-template.item-rarity-exotic .item-name {
+    color: #c82200;
+}
+
+.item-detail-template.item-rarity-ascended .item-name {
+    color: #fb3e8d
+}
+
+.item-detail-template.item-rarity-legendary .item-name {
+    color: #9960ea
+}
+
+.item-detail-template .item-icon {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    width: 48px;
+    height: 48px;
+    /*border: 1px solid #858585;*/
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 48px 48px;
+}
+
+.item-detail-template .item-icon::after {
+    display: block;
+    position: relative;
+    width: 54px;
+    height: 54px;
+    top: -3px;
+    left: -3px;
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: 54px 54px;
+    background-image: url(images/BorderTemplate.png);
+    overflow: hidden;
+    text-indent: -99px;
+    content: 'a';
+}
+
+.item-detail-template .item-icon.ammo {
+    background-image: url(images/Arrows.png);
+}
+
+.item-detail-template .item-icon.amulet {
+    background-image: url(images/Necklace_Blood.png);
+}
+
+.item-detail-template .item-icon.armor {
+    background-image: url(images/Chest_Cloth_Luxury.png);
+}
+
+.item-detail-template .item-icon.bracers {
+    background-image: url(images/Bracers_Cloth_Luxury.png);
+}
+
+.item-detail-template .item-icon.glitch {
+    background-image: url(images/Glitch.png);
+}
+
+.item-detail-template .item-icon.gun {
+    background-image: url(images/Gun.png);
+}
+
+.item-detail-template .item-icon.melee {
+    background-image: url(images/Sword_fire.png);
+}
+
+.item-detail-template .item-icon.potion1 {
+    background-image: url(images/Minor_Potion_mana.png);
+}
+
+.item-detail-template .item-icon.potion2 {
+    background-image: url(images/Major_Potion_mana.png);
+}
+
+.item-detail-template .item-icon.ranged {
+    background-image: url(images/Bow_enhanced.png);
+}
+
+.item-detail-template .item-icon.scroll-arcane {
+    background-image: url(images/Scroll_magic3.png);
+}
+
+.item-detail-template .item-icon.scroll-divine {
+    background-image: url(images/Scroll_magic2.png);
+}
+
+.item-detail-template .item-icon.shield {
+    background-image: url(images/Shield_Steel2.png);
+}
+
+.item-detail-template .item-icon.staff {
+    background-image: url(images/Staff_enhanced.png);
+}
+
+.item-detail-template .item-icon.ring {
+    background-image: url(images/Ring_Jade.png);
+}
+
+.item-detail-template .item-icon.wondrous {
+    background-image: url(images/Necklace_Moonstone_Green.png);
+}
+
+.item-detail-template .item-name {
+    width: 261px;
+    height: auto;
+    display: inline-block;
+    vertical-align: middle;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.item-detail-template .item-description {
+    color: #a3cbc2
+}
+
+.item-detail-template .stats {
+    margin: 16px 0
+}
+
+.item-detail-template .stats .attributes .attribute {
+    display: block;
+    color: #28ec28;
+    text-transform: capitalize;
+    line-height: 1.3;
+}
+
+.item-detail-template.item-type-weapon .stats .weapon-strength, .item-detail-template.item-type-weapon .stats .weapon-armor-defense {
+    display: block
+}
+
+.item-detail-template.item-type-armor .stats .weight-class, .item-detail-template.item-type-armor .stats .weapon-armor-defense {
+    display: block
+}
+
+.item-detail-template.item-subtype-food .stats .buff {
+    color: #ddd
+}
+
+.item-detail-template .item-id, .item-detail-template .item-game-types, .item-detail-template .item-restrictions, .item-detail-template .item-crafting-material {
+    display: none
+}
+
+.item-detail-template p {
+    line-height: 1;
+    margin: 2px 0 0 0;
+    padding: 0
+}
+
+.item-detail-template .item-value span {
+    padding: 0 14px 0 0;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: 12px 12px
+}
+
+.item-detail-template .item-value .item-value-gold {
+    color: #f4c767;
+    background-image: url(images/gold-coin.png)
+}
+
+.item-detail-template .item-value .item-value-silver {
+    color: #c6c6c6;
+    background-image: url(images/silver-coin.png)
+}
+
+.item-detail-template .item-value .item-value-copper {
+    color: #a95d21;
+    background-image: url(images/copper-coin.png)
+}
+
