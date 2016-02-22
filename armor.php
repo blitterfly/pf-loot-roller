@@ -7,6 +7,7 @@ function cost_armor($entry, $added_cost = 0, $adjust = 1.0) {
 function roll_armor($floor, $ceiling)
 {
     global $armors, $armorenh, $shields, $shieldenh;
+    global $armor_materials;
 
 armor_do_over:
     if (rand(0, 3) === 0)
@@ -22,20 +23,11 @@ armor_do_over:
             
     $r = rand(1, 100);
     $mat = new NoMaterial();
-    if ($arm->material === (Metal | Hide)) {
-        if (inr($r, 91, 94)) $mat = new Adamantine();
-        else if (inr($r, 95, 98)) $mat = new Dragonhide();
-        else if (inr($r, 99, 100)) $mat = new Mithral();
-    } else if ($arm->material === (Metal | Wood)) {
-        if (inr($r, 91, 95)) $mat = new Darkwood();
-        else if (inr($r, 96, 100)) $mat = new Mithral();
-    } else if ($arm->material === Metal) {
-        if (inr($r, 91, 97)) $mat = new Adamantine();
-        else if (inr($r, 98, 100)) $mat = new Mithral();
-    } else if ($arm->material === Hide) {
-        if (inr($r, 91, 100)) $mat = new Dragonhide();
-    } else if ($arm->material === Wood) {
-        if (inr($r, 91, 100)) $mat = new Darkwood();
+    if ($is_shield === FALSE && $arm->material !== None && $r > 69) // TODO: fix materials for shields
+    {
+        $mat = arr($armor_materials);
+        if ($mat->armor_cost($arm) === MAT_INVALID)
+            $mat = new NoMaterial();
     }
 
     $final = new ItemEntry();

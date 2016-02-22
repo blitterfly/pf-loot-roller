@@ -8,6 +8,7 @@ function cost_weapon($entry, $double, $added_cost, $adjust = 1.0) {
 function roll_weapon($floor, $ceiling) {
     global $weapons_simple, $weapons_martial, $weapons_exotic, $weapons_firearms;
     global $weaponenh_melee, $weaponenh_ranged, $weaponenh_firearms, $weaponenh_ammo;
+    global $weapon_materials;
 
 weapon_do_over:
     $r = rand(1, 100);
@@ -21,19 +22,11 @@ weapon_do_over:
 
     $r = rand(1, 100);
     $mat = new NoMaterial();
-    if ($wep->material === (Metal | Wood)) {
-        if (inr($r, 91, 92)) $mat = new Adamantine();
-        else if (inr($r, 93, 94)) $mat = new ColdIron();
-        else if (inr($r, 95, 96)) $mat = new Darkwood();
-        else if (inr($r, 97, 98)) $mat = new Mithral();
-        else if (inr($r, 99, 100)) $mat = new Silver();
-    } else if ($wep->material === Metal) {
-        if (inr($r, 91, 92)) $mat = new Adamantine();
-        else if (inr($r, 93, 95)) $mat = new ColdIron();
-        else if (inr($r, 96, 96)) $mat = new Mithral();
-        else if (inr($r, 97, 100)) $mat = new Silver();
-    } else if ($wep->material === Wood) {
-        if (inr($r, 91, 100)) $mat = new Darkwood();
+    if ($wep->material !== None && $r > 69)
+    {
+        $mat = arr($weapon_materials);
+        if ($mat->weapon_cost($wep) === MAT_INVALID)
+            $mat = new NoMaterial();
     }
 
     $final = new ItemEntry();

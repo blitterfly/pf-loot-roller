@@ -56,6 +56,7 @@ function energy_resist()
 $armors = [
     new Armor('padded armor', 155, 1, L, None),
     new Armor('leather armor', 160, 2, L, None),
+    new Armor('bulette leather armor', 200, 3, L, None),
     new Armor('studded leather armor', 175, 3, L, None),
     new Armor('chain shirt', 250, 4, L),
     new Armor('hide armor', 165, 4, M, Hide),
@@ -65,6 +66,7 @@ $armors = [
     new Armor('splint mail', 350, 7, H),
     new Armor('banded mail', 400, 7, H, Hide | Metal),
     new Armor('half-plate', 750, 8, H, Hide | Metal),
+    new Armor('bulette full plate', 16500, 9, H, None),
     new Armor('full plate', 1650, 9, H, Hide | Metal),
     new Armor('haramaki', 153, 1, L),
     new Armor('silken ceremonial armor', 180, 1, L, None),
