@@ -609,9 +609,9 @@ class Wyroot extends Material
 {
     protected $ki;
     
-    function __construct()
+    function __construct($ki = 1)
     {
-        $this->ki = 1;
+        $this->ki = $ki;
     }
     
     function name()
@@ -635,22 +635,6 @@ class Wyroot extends Material
             return 4000;
         }
         return MAT_INVALID;
-    }
-}
-
-class Wyroot2 extends Wyroot
-{
-    function __construct()
-    {
-        $this->ki = 2;
-    }
-}
-
-class Wyroot3 extends Wyroot
-{
-    function __construct()
-    {
-        $this->ki = 3;
     }
 }
 
@@ -691,7 +675,7 @@ $weapon_materials = [
     new Viridium(),
     new Whipwood(),
     new Wyroot(),
-    new Wyroot2(),
-    new Wyroot3()
+    new Wyroot(2),
+    new Wyroot(3)
 ];
 ?>
