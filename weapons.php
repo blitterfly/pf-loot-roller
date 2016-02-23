@@ -79,6 +79,7 @@ weapon_do_over:
 
     if ($final->enh === 0)
         $final->enh = 1;
+    array_unshift($final->tags, '+' . $final->enh . ' attack/damage (enhancement)');
     if ($wep->is_ammo())
         $final->name = substr($wep->name, 0, strpos($wep->name, '(') - 1);
     else

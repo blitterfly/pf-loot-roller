@@ -65,6 +65,8 @@ armor_do_over:
     if (cost_armor($final, $added_cost) > $ceiling * 1.10)
         goto armor_do_over;
 
+    if ($final->enh > 0)
+        array_unshift($final->tags, '+' . $final->enh . ' AC (enhancement)');
     $final->desc .= ' (AC' . NBSP . ($arm->ac + $final->enh) . ')';
     $final->cost = cost_armor($final, $added_cost, 0.10); // 10% cost campaign
 
