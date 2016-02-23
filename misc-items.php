@@ -200,4 +200,42 @@ function roll_staff($floor, $ceiling)
     $final->icon = 'staff';
     return $final;
 }
+
+function roll_wand($floor, $ceiling)
+{
+    global $wands;
+    
+    $r = rand(1, 100);
+    if ($ceiling > 50000) // major
+    {
+        if (inr($r, 1, 60))
+            $wand = arr($wands[3]);
+        else
+            $wand = arr($wands[4]);
+    }
+    else if ($ceiling > 20000) // medium
+    {
+        if (inr($r, 1, 60))
+            $wand = arr($wands[2]);
+        else
+            $wand = arr($wands[3]);
+    }
+    else // minor
+    {
+        if (inr($r, 1, 5))
+            $wand = arr($wands[0]);
+        else if (inr($r, 6, 60))
+            $wand = arr($wands[1]);
+        else
+            $wand = arr($wands[2]);
+    }
+    
+    $final = new ItemEntry();
+    $final->name = 'wand of ' . $wand->name;
+    $final->desc = to_ordinal($wand->level) . '-level wand';
+    $final->icon = 'wand';
+    $final->cost = $wand->cost;
+    
+    return $final;
+}
 ?>

@@ -135,6 +135,10 @@
     background-image: url(images/Ring_Jade.png);
 }
 
+.item-detail-template .item-icon.wand {
+    background-image: url(images/wand.png);
+}
+
 .item-detail-template .item-icon.wondrous {
     background-image: url(images/Necklace_Moonstone_Green.png);
 }
