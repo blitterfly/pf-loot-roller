@@ -77,9 +77,10 @@ weapon_do_over:
     if (cost_weapon($final, $wep->double, $added_cost) > $ceiling * 1.10)
         goto weapon_do_over;
 
-    if ($final->enh === 0)
+    if ($final->enh === 0 && count($final->tags) > 0)
         $final->enh = 1;
-    array_unshift($final->tags, '+' . $final->enh . ' attack/damage (enhancement)');
+    if ($final->enh > 0)
+        array_unshift($final->tags, '+' . $final->enh . ' attack/damage (enhancement)');
     if ($wep->is_ammo())
         $final->name = substr($wep->name, 0, strpos($wep->name, '(') - 1);
     else

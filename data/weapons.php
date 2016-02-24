@@ -13,8 +13,9 @@ class Weapon
     public $name;
     public $cost;
     public $double;
+    public $light;
     
-    function __construct($name, $dmg, $cost, $type = Melee, $material = Metal, $double = false)
+    function __construct($name, $dmg, $cost, $type = Melee, $material = Metal, $double = false, $light = false)
     {
         $this->name = $name;
         $this->dmg = $dmg;
@@ -22,6 +23,7 @@ class Weapon
         $this->type = $type;
         $this->material = $material;
         $this->double = $double;
+        $this->light = $light;
     }
     
     function is_ammo()
@@ -44,12 +46,11 @@ class Weapon
     
     function base_cost()
     {
+        // TODO: account for ammo
         $bc = $this->cost - 300;
         if ($this->double)
             $bc -= 300;
-        if ($bc < 1)
-            $bc = 1;
-        return $bc;
+        return max($bc, 1);
     }    
 }
 
@@ -143,6 +144,11 @@ function endless_valid($weapon)
     return strpos($weapon->name, 'bow') !== FALSE;
 }
 
+function impact_valid($weapon)
+{
+    return !$weapon->light;
+}
+
 function keen_valid($weapon)
 {
     return bit($weapon->dmg, P) || bit($weapon->dmg, S);
@@ -159,6 +165,7 @@ function vorpal_valid($weapon)
     return bit($weapon->dmg, S);
 }
 
+// TODO:  mark light weapons
 $weapons_simple = [
     new Weapon('blowgun', P, 302, Ranged, None),
     new Weapon('blowgun darts (10)', P, 6, Ranged, Metal),
@@ -166,28 +173,29 @@ $weapons_simple = [
     new Weapon('heavy crossbow', P, 350, Ranged, None),
     new Weapon('light crossbow', P, 335, Ranged, None),
     new Weapon('crossbow bolts (30)', P, 61, Ranged, Metal),
-    new Weapon('dagger', P | S, 302),
-    new Weapon('punching dagger', P, 302),
+    new Weapon('dagger', P | S, 302, Melee, Metal, false, true),
+    new Weapon('punching dagger', P, 302, Melee, Metal, false, true),
     new Weapon('dart', P, 300, Ranged, Metal),
     new Weapon('gauntlet', B, 302),
     new Weapon('spiked gauntlet', P, 305),
     new Weapon('javelin', P, 301, Ranged, Metal | Wood),
     new Weapon('longspear', P, 305, Melee, Metal | Wood),
     new Weapon('heavy mace', B, 312),
-    new Weapon('light mace', B, 305),
+    new Weapon('light mace', B, 305, Melee, Metal, false, true),
     new Weapon('morningstar', B | P, 308),
     new Weapon('quarterstaff', B, 600, Melee, Wood, true),
     new Weapon('shortspear', P, 301, Melee, Metal | Wood),
-    new Weapon('sickle', S, 306),
+    new Weapon('sickle', S, 306, Melee, Metal, false, true),
     new Weapon('sling', B, 300, Ranged, None),
     new Weapon('sling bullets (10)', B, 60, Ranged, Metal),
     new Weapon('spear', P, 302, Melee, Metal | Wood),
-    new Weapon('hanbo', B, 301, Melee, Wood),
-    new Weapon('amulet of mighty fists', None, 301, Melee, None)
+    new Weapon('hanbo', B, 301, Melee, Wood, false, true),
+    new Weapon('amulet of mighty fists', None, 301, Melee, None),
+    new Weapon('kunai', B | P, 302, Melee, Metal, false, true)
 ];
 
 $weapons_martial = [
-    new Weapon('throwing axe', S, 308, Ranged),
+    new Weapon('throwing axe', S, 308, Ranged, Metal, false, true),
     new Weapon('battleaxe', S, 310),
     new Weapon('falchion', S, 375),
     new Weapon('flail', B, 308),
@@ -198,36 +206,36 @@ $weapons_martial = [
     new Weapon('greatsword', S, 350),
     new Weapon('guisarme', S, 309),
     new Weapon('halberd', P | S, 310),
-    new Weapon('light hammer', B, 301),
-    new Weapon('handaxe', S, 306),
-    new Weapon('kukri', S, 308),
+    new Weapon('light hammer', B, 301, Melee, Metal, false, true),
+    new Weapon('handaxe', S, 306, Melee, Metal, false, true),
+    new Weapon('kukri', S, 308, Melee, Metal, false, true),
     new Weapon('lance', P, 310),
     new Weapon('longbow', P, 375, Ranged, Wood),
     new Weapon('composite longbow', P, 400, Ranged, Wood), // TODO: str rating
     new Weapon('arrows (20)', P, 121, Ranged),
     new Weapon('longsword', S, 315),
     new Weapon('heavy pick',  P, 308),
-    new Weapon('light pick', P, 304),
+    new Weapon('light pick', P, 304, Melee, Metal, false, true),
     new Weapon('ranseur', P, 310),
     new Weapon('rapier', P, 320),
-    new Weapon('sap', B, 301, Melee, None),
+    new Weapon('sap', B, 301, Melee, None, false, true),
     new Weapon('scimitar', S, 315),
     new Weapon('scythe', P | S, 318),
     new Weapon('shortbow', P, 330, Ranged, Wood),
     new Weapon('composite shortbow', P, 375, Ranged, Wood),
-    new Weapon('starknife', P, 324),
-    new Weapon('short sword', P, 310),
+    new Weapon('starknife', P, 324, Melee, Metal, false, true),
+    new Weapon('short sword', P, 310, Melee, Metal, false, true),
     new Weapon('trident', P, 315),
     new Weapon('warhammer', B, 312),
     new Weapon('laser torch', F, 6000, Melee, None),
     new Weapon('stun baton', B | E, 5000, Melee, None),
     new Weapon('butterfly sword', S, 320),
     new Weapon('iron brush', B, 302),
-    new Weapon('jutte', B, 308),
-    new Weapon('kerambit', S, 302),
-    new Weapon('lungchaun tamo', P | S, 305),
-    new Weapon('shang gou', S, 306),
-    new Weapon('tonfa', B, 301, Melee, Wood),
+    new Weapon('jutte', B, 308, Melee, Metal, false, true),
+    new Weapon('kerambit', S, 302, Melee, Metal, false, true),
+    new Weapon('lungchaun tamo', P | S, 305, Melee, Metal, false, true),
+    new Weapon('shang gou', S, 306, Melee, Metal, false, true),
+    new Weapon('tonfa', B, 301, Melee, Wood, false, true),
     new Weapon('wushu dart (5)', P, 301, Ranged, Metal),
     new Weapon('nine ring broadsword', S, 315),
     new Weapon('double chicken saber', S, 312),
@@ -241,7 +249,8 @@ $weapons_martial = [
     new Weapon('tiger fork', P, 305, Melee, Wood | Metal),
     new Weapon('tube arrow shooter', P, 303, Ranged),
     new Weapon('bamboo shaft arrow (10)', P, 301, Ranged, Metal),
-    new Weapon('iron-tipped distance arrow (20)', P, 301, Ranged, Metal)
+    new Weapon('iron-tipped distance arrow (20)', P, 301, Ranged, Metal),
+    new Weapon('gladius', P | S, 315, Melee, Metal, false, true)
 ];
 
 $weapons_exotic = [
@@ -256,27 +265,27 @@ $weapons_exotic = [
     new Weapon('elven curve blade', S, 380),
     new Weapon('dire flail', B, 690, Melee, Metal, true),
     new Weapon('gnome hooked hammer', B | P, 620, Melee, Metal, true),
-    new Weapon('kama', S, 302),
+    new Weapon('kama', S, 302, Melee, Metal, false, true),
     new Weapon('net', None, 320, Ranged, None),
     new Weapon('nunchaku', B, 302, Melee, Wood),
-    new Weapon('sai', B, 301),
+    new Weapon('sai', B, 301, Melee, Metal, false, true),
     new Weapon('shuriken (5)', P, 31, Ranged),
-    new Weapon('siangham', P, 303),
+    new Weapon('siangham', P, 303, Melee, Metal, false, true),
     new Weapon('halfling sling staff', B, 320, Ranged, Wood),
     new Weapon('bastard sword', S, 335),
     new Weapon('two-bladed sword', S, 700, Melee, Metal, true),
     new Weapon('dwarven urgrosh', P | S, 650, Melee, Metal, true),
     new Weapon('dwarven waraxe', S, 330),
-    new Weapon('whip', S, 301, Melee, None),
+    new Weapon('whip', S, 301, Melee, None, false, true),
     new Weapon('monowhip', S, 70000, Melee, None),
     new Weapon('chainsaw', S, 2700),
-    new Weapon('bich\'hwa', P | S, 305),
-    new Weapon('dan bong', B, 301, Melee, Wood),
-    new Weapon('emei piercer', P, 303),
-    new Weapon('fighting fan', P | S, 305),
-    new Weapon('pata', P, 314),
-    new Weapon('tekko-kagi', P, 302),
-    new Weapon('wakizashi', P | S, 335),
+    new Weapon('bich\'hwa', P | S, 305, Melee, Metal, false, true),
+    new Weapon('dan bong', B, 301, Melee, Wood, false, true),
+    new Weapon('emei piercer', P, 303, Melee, Metal, false, true),
+    new Weapon('fighting fan', P | S, 305, Melee, Metal, false, true),
+    new Weapon('pata', P, 314, Melee, Metal, false, true),
+    new Weapon('tekko-kagi', P, 302, Melee, Metal, false, true),
+    new Weapon('wakizashi', P | S, 335, Melee, Metal, false, true),
     new Weapon('katana', S, 350),
     new Weapon('nine-section whip', B, 308),
     new Weapon('temple sword', S, 330),
@@ -390,7 +399,7 @@ $weaponenh_melee = [
     new WeaponEnh(2, 'holy'),
     new WeaponEnh(2, 'icy burst'),
     new WeaponEnh(2, 'igniting'),
-    new WeaponEnh(2, 'impact'), // TODO: no light weapons
+    new WeaponEnh(2, 'impact', 0, '', 'impact_valid'),
     new WeaponEnh(2, 'invigorating'),
     new WeaponEnh(2, 'ki intensifying'),
     new WeaponEnh(2, 'lifesurge'),
