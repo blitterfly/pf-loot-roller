@@ -7,6 +7,7 @@ require_once('data/materials.php');
 require_once('data/names.php');
 require_once('data/potions.php');
 require_once('data/rings.php');
+require_once('data/rods.php');
 require_once('data/scrolls.php');
 require_once('data/staves.php');
 require_once('data/wands.php');
@@ -23,6 +24,7 @@ if (isset($_POST['submit']))
     $armor_bit = isset($_POST['armor_bit']);
     $potion_bit = isset($_POST['potion_bit']);
     $ring_bit = isset($_POST['ring_bit']);
+    $rod_bit = isset($_POST['rod_bit']);
     $scroll_bit = isset($_POST['scroll_bit']);
     $staff_bit = isset($_POST['staff_bit']);
     $wand_bit = isset($_POST['wand_bit']);
@@ -38,6 +40,7 @@ else
     $armor_bit = true;
     $potion_bit = false;
     $ring_bit = true;
+    $rod_bit = false;
     $scroll_bit = false;
     $staff_bit = false;
     $wand_bit = true;
@@ -91,8 +94,9 @@ else
 </p>
 <p>
     <input type="checkbox" name="armor_bit" <?php schecked($armor_bit); ?>> Armor<br>
-    <input type="checkbox" name="potion_bit" <?php schecked($potion_bit); ?>> Potion<br>
-    <input type="checkbox" name="ring_bit" <?php schecked($ring_bit); ?>> Ring<br>
+    <input type="checkbox" name="potion_bit" <?php schecked($potion_bit); ?>> Potions<br>
+    <input type="checkbox" name="ring_bit" <?php schecked($ring_bit); ?>> Rings<br>
+    <input type="checkbox" name="rod_bit" <?php schecked($rod_bit); ?>> Rods<br>
     <input type="checkbox" name="scroll_bit" <?php schecked($scroll_bit); ?>> Scrolls<br>
     <input type="checkbox" name="staff_bit" <?php schecked($staff_bit); ?>> Staves<br>
     <input type="checkbox" name="wand_bit" <?php schecked($wand_bit); ?>> Wands<br>
@@ -113,6 +117,8 @@ if (isset($_POST['submit']))
         array_push($itemfuncs, 'roll_potion');
     if ($ring_bit)
         array_push($itemfuncs, 'roll_ring');
+    if ($rod_bit)
+        array_push($itemfuncs, 'roll_rod');
     if ($scroll_bit)
         array_push($itemfuncs, 'roll_scroll');
     if ($staff_bit)

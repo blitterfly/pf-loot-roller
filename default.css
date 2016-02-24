@@ -115,6 +115,10 @@
     background-image: url(images/Bow_enhanced.png);
 }
 
+.item-detail-template .item-icon.rod {
+    background-image: url(images/MagicDust_Yellow.png);
+}
+
 .item-detail-template .item-icon.scroll-arcane {
     background-image: url(images/Scroll_magic3.png);
 }

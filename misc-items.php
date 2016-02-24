@@ -100,6 +100,26 @@ ring_do_over:
     return $final;
 }
 
+function roll_rod($floor, $ceiling)
+{
+    global $rods;
+    $rods_trimmed = filter_by_cost($rods, min($floor, 40000), $ceiling);
+    if (count($rods_trimmed) === 0)
+        return glitch();
+
+    $rod = arr($rods_trimmed);
+    
+    $final = new ItemEntry();
+    $final->name = $rod->name;
+    $sub = $rod->subselect();
+    if ($sub !== '')
+        $final->name .= ' (' . $sub . ')';
+    $final->desc = 'magic rod';
+    $final->cost = $rod->cost;
+    $final->icon = 'rod';
+    
+    return $final;
+}
 
 function roll_scroll($floor, $ceiling)
 {
